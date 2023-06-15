@@ -1,3 +1,12 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+invoice_new:
+    path: /invoice/new
+    controller: App\Controller\InvoiceController::create
+    methods: [GET, POST]
+invoice_show:
+    path: /invoice/{id}
+    controller: App\Controller\InvoiceController::show
+    methods: [GET]

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Invoice{% endblock %}
+
+{% block body %}
+    <h1>Create Invoice</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.invoiceDate) }}
+    {{ form_row(form.invoiceNumber) }}
+    {{ form_row(form.customerId) }}
+    <h2>Invoice Lines</h2>
+    <ul class="invoice-lines" data-prototype="{{ form_widget(form.invoiceLines.vars.prototype)|e('html_attr') }}">
+    </ul>
+    <button type="submit">Create</button>
+    {{ form_end(form) }}
+{% endblock %}

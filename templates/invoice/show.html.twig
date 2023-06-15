@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoice Details{% endblock %}
+
+{% block body %}
+    <h1>Invoice Details</h1>
+
+    <table>
+        <tr>
+            <th>ID:</th>
+            <td>{{ invoice.id }}</td>
+        </tr>
+        <tr>
+            <th>Invoice Date:</th>
+            <td>{{ invoice.invoiceDate|date }}</td>
+        </tr>
+        <tr>
+            <th>Invoice Number:</th>
+            <td>{{ invoice.invoiceNumber }}</td>
+        </tr>
+        <tr>
+            <th>Customer ID:</th>
+            <td>{{ invoice.customerId }}</td>
+        </tr>
+    </table>
+    <h2>Invoice Lines</h2>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>VAT Amount</th>
+            <th>Total with VAT</th>
+        </tr>
+        {% for line in invoice.invoiceLines %}
+            <tr>
+                <td>{{ line.description }}</td>
+                <td>{{ line.quantity }}</td>
+                <td>{{ line.amount }}</td>
+                <td>{{ line.vatAmount }}</td>
+                <td>{{ line.totalWithVat }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+<p>
+<a href="{{ path('invoice_new') }}">Create a new Invoice</a>
+</p>
+
+{% endblock %}
